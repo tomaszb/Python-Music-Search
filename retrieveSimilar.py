@@ -4,15 +4,15 @@ from Artist import *
 
 APIKEY = "YETQALRUNYZDIOLCU"
 
-def getEchoNestArtists(artist, action):
+def getEchoNestArtists(artist, listofartist, action):
 	f = urllib.urlopen("http://developer.echonest.com/api/v4/artist/" + action + "?api_key=" + APIKEY + "&name=" + artist)
 	response = f.read()
 
-	result = similarParse(response)
+	result = similarParse(response, listofartist)
 
 	return result
 
-def similarParse(response):
+def similarParse(response, listofartist):
 	results = []
 	data = json.loads(response)
 
@@ -30,6 +30,7 @@ def similarParse(response):
 
 	for x in range(0, len(names)):
 		tempartist = Artist(names[x], ids[x])
+		listofartist.append(tempartist)
 		results.append(tempartist)
 				
 	return results
