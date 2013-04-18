@@ -1,6 +1,8 @@
 from retrieveSimilar import *
 from Artist import *
 from retrieveSongs import *
+from youtubeFind import *
+#from makeplaylistyoutube import *
 
 class musicdiscclass:
 	listofartists = []
@@ -10,4 +12,6 @@ class musicdiscclass:
 		
 		getEchoNestSongs(self.listofartists)
 
+		#makeplaylistfunc()
 
+discInst = musicdiscclass()

@@ -15,7 +15,7 @@ def getEchoNestArtists(artist, listofartist, action):
 def similarParse(response, listofartist):
 	results = []
 	data = json.loads(response)
-
+	print data
 	artistslist = data["response"]["artists"]
 
 	names =[]

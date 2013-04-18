@@ -1,4 +1,4 @@
-import json, pprint, urllib, urllib2
+import json, pprint, urllib, urllib2, logging
 
 APIKEY = "YETQALRUNYZDIOLCU"
 
@@ -9,7 +9,6 @@ def getEchoNestSongs(listofArtists):
 		listofsongs = parseSongs(response)
 
 		everyArt.addSongs(listofsongs)
-
 def connectforSongs(Artist_id):
 	f = urllib.urlopen("http://developer.echonest.com/api/v4/song/search?api_key=" + APIKEY + "&artist_id=" + Artist_id + "&sort=song_hotttnesss-desc&bucket=song_hotttnesss")
 	response = f.read()
@@ -18,7 +17,7 @@ def connectforSongs(Artist_id):
 
 def parseSongs(response):
 	data = json.loads(response)
-
+	logging.debug(response)
 	songslist = data["response"]["songs"]
 
 	titles = []
